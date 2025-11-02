@@ -34,7 +34,7 @@ Untuk menjalankan proyek ini secara lokal, Anda akan memerlukan kunci API dari F
 
 1.  **Clone Repositori**
     ```bash
-    git clone [https://github.com/Zaynorang/movie-tracker.git](https://github.com/Zaynorang/movie-tracker.git)
+    git clone https://github.com/Zaynorang/movie-tracker.git
     cd movie-tracker-react
     ```
 
