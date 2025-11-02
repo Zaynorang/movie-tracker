@@ -603,3 +603,22 @@ textarea {
 .nav-link-brand {
   padding: 0; /* Hapus padding jika ada */
 }
+
+/* --- Style untuk Link "Forgot Password" --- */
+.form-forgot-password {
+  text-align: center;
+  margin-top: 1.2rem;
+  margin-bottom: -0.5rem; /* Sedikit menarik link "Sign Up" ke atas */
+}
+
+.forgot-password-link {
+  color: #aaa;
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.forgot-password-link:hover {
+  color: #e50914; /* Merah Netflix saat di-hover */
+  text-decoration: underline;
+}

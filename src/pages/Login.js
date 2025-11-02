@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { auth } from '../firebase';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { signInWithEmailAndPassword, sendPasswordResetEmail } from 'firebase/auth';
 
 const Login = () => {
   // State untuk menyimpan email, password, dan pesan error
@@ -29,6 +29,28 @@ const Login = () => {
     }
     setLoading(false);
   };
+  const handleForgotPassword = async () => {
+  // 1. Cek apakah pengguna sudah mengetik email di form
+  if (!email) {
+    setError('Please enter your email address in the email field first, then click "Forgot Password".');
+    return;
+  }
+
+  setError(''); // Hapus error sebelumnya
+  setLoading(true); // Tampilkan status loading di tombol Login
+
+  try {
+    // 2. Panggil fungsi Firebase untuk mengirim email
+    await sendPasswordResetEmail(auth, email);
+
+    // 3. Beri feedback sukses (kita gunakan state 'error' untuk menampilkan pesan)
+    setError(`Success! A password reset email has been sent to ${email}. Check your inbox.`);
+  } catch (err) {
+    // 4. Beri feedback error
+    setError('Error: ' + err.message);
+  }
+  setLoading(false); // Selesai loading
+};
 
   return (
     <div className="form-container">
@@ -58,6 +80,12 @@ const Login = () => {
         <button type="submit" className="btn btn-primary" disabled={loading}>
           {loading ? 'Logging In...' : 'Log In'}
         </button>
+
+        <p className="form-forgot-password">
+      <span onClick={handleForgotPassword} className="forgot-password-link">
+        Forgot Password?
+      </span>
+    </p>
         <p className="form-switch">
           Need an account? <Link to="/signup">Sign Up</Link>
         </p>
