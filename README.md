@@ -1,92 +1,70 @@
-# 🎬 Movie Tracker (React + Firebase)
+# Getting Started with Create React App
 
-Ini adalah aplikasi web CRUD (Create, Read, Update, Delete) lengkap yang dibuat dengan React dan Firebase. Aplikasi ini memungkinkan pengguna untuk mendaftar, masuk, dan mengelola daftar film pribadi yang telah mereka tonton.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## ✨ Fitur
+## Available Scripts
 
-* **Autentikasi Pengguna:** Pendaftaran dan Login menggunakan Firebase Authentication (Email/Password).
-* **Perlindungan Rute:** Hanya pengguna yang sudah login yang dapat mengakses dashboard dan halaman CRUD.
-* **Operasi CRUD Penuh:**
-    * **Create:** Menambah film baru (judul, tahun, genre, rating, catatan).
-    * **Read:** Menampilkan daftar film milik pengguna yang sedang login.
-    * **Update:** Mengedit detail film yang ada.
-    * **Delete:** Menghapus film dari daftar.
-* **Data Spesifik Pengguna:** Setiap film ditautkan ke UID pengguna di Firestore, memastikan pengguna hanya dapat melihat dan mengelola film mereka sendiri.
-* **Tech Stack:** React (Hooks), React Router v6, Firebase v9+ (Auth & Firestore), dan CSS murni untuk styling tema gelap.
+In the project directory, you can run:
 
----
+### `npm start`
 
-## 🚀 Memulai (Setup)
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-Untuk menjalankan proyek ini secara lokal, Anda perlu mengatur proyek Firebase Anda sendiri terlebih dahulu.
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-### 1. Prasyarat
+### `npm test`
 
-* Node.js (v14 atau lebih baru) dan npm terinstal.
-* Akun Google untuk membuat proyek Firebase.
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### 2. Buat Proyek Firebase
+### `npm run build`
 
-1.  Pergi ke [Firebase Console](https://console.firebase.google.com/).
-2.  Klik **"Add project"** dan ikuti langkah-langkah untuk membuat proyek baru.
-3.  Setelah proyek Anda siap, di dashboard proyek, klik ikon **Web** (`</>`) untuk mendaftarkan aplikasi web baru.
-4.  Beri nama aplikasi Anda (misal: "movie-tracker") dan klik **"Register app"**.
-5.  Firebase akan memberi Anda objek konfigurasi (`firebaseConfig`). **Salin objek ini.**
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-### 3. Aktifkan Layanan Firebase
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-Di dalam proyek Firebase Anda:
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-1.  **Authentication:**
-    * Pergi ke tab **Authentication** di menu sebelah kiri.
-    * Klik **"Get started"**.
-    * Pilih **"Email/Password"** sebagai penyedia (provider) dan **Enable** lalu Simpan.
-2.  **Firestore:**
-    * Pergi ke tab **Firestore Database**.
-    * Klik **"Create database"**.
-    * Pilih **Start in test mode** (Mode Uji). *Peringatan: Ini membuat database Anda terbuka. Untuk produksi, Anda harus mengatur "Security Rules".*
-    * Pilih lokasi server (misal: `us-central` atau `asia-southeast1`) dan klik **Enable**.
+### `npm run eject`
 
-### 4. Konfigurasi Proyek Lokal
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-1.  **Clone Repositori (atau Salin Kode)**
-    Jika Anda mengunduh ini, lewati langkah ini. Jika tidak:
-    ```bash
-    git clone [URL_REPOSITORI_ANDA]
-    cd movie-tracker-react
-    ```
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-2.  **Instal Dependensi**
-    Buka terminal di dalam folder `movie-tracker-react` dan jalankan:
-    ```bash
-    npm install
-    ```
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-3.  **Tambahkan Konfigurasi Firebase Anda**
-    * Buka file `src/firebase.js`.
-    * Ganti placeholder `firebaseConfig` dengan objek konfigurasi yang Anda salin dari Firebase pada Langkah 2.
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-    ```javascript
-    // src/firebase.js
-    
-    // ... impor ...
-    
-    // TODO: Ganti ini dengan konfigurasi Anda!
-    const firebaseConfig = {
-      apiKey: "YOUR_API_KEY",
-      authDomain: "YOUR_AUTH_DOMAIN",
-      projectId: "YOUR_PROJECT_ID",
-      storageBucket: "YOUR_STORAGE_BUCKET",
-      messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-      appId: "YOUR_APP_ID"
-    };
-    
-    // ... sisa kode ...
-    ```
+## Learn More
 
-### 5. Jalankan Aplikasi Secara Lokal
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-Setelah dependensi terinstal dan konfigurasi Firebase diatur, jalankan:
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-```bash
-npm start
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
