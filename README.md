@@ -34,7 +34,7 @@ Untuk menjalankan proyek ini secara lokal, Anda akan memerlukan kunci API dari F
 
 1.  **Clone Repositori**
     ```bash
-    git clone [https://github.com/your-username/movie-tracker-react.git](https://github.com/your-username/movie-tracker-react.git)
+    git clone [https://github.com/Zaynorang/movie-tracker.git](https://github.com/Zaynorang/movie-tracker.git)
     cd movie-tracker-react
     ```
 
@@ -100,7 +100,7 @@ Untuk menjalankan proyek ini secara lokal, Anda akan memerlukan kunci API dari F
 
 ## 🤖 AI Support Explanation
 
-Proyek ini dikembangkan dengan bantuan ekstensif dari asisten AI Google, Gemini. Seluruh proses pengembangan, mulai dari pembuatan ide hingga deployment, dibimbing oleh AI.
+Proyek ini dikembangkan dengan bantuan ekstensif dari asisten AI. Seluruh proses pengembangan, mulai dari pembuatan ide hingga deployment, dibimbing oleh AI.
 
 Kontribusi AI meliputi:
 * **Pembuatan Kode:** Menghasilkan kode boilerplate awal untuk semua komponen React, halaman, dan file `firebase.js`.
