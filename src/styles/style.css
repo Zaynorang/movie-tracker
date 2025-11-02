@@ -592,3 +592,14 @@ textarea {
   padding: 1rem;
   border-radius: 4px;
 }
+
+/* Style untuk logo di Navbar */
+.navbar-logo {
+  height: 40px; /* Sesuaikan tinggi sesuai keinginan */
+  width: auto;
+  vertical-align: middle;
+}
+
+.nav-link-brand {
+  padding: 0; /* Hapus padding jika ada */
+}

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { auth } from '../firebase';
 import { signOut } from 'firebase/auth';
+import logo from '../assets/logo-movie-tracker.png'; // Sesuaikan path jika berbeda
 
 // Menerima prop 'user' dari App.js
 const Navbar = ({ user }) => {
@@ -19,9 +20,9 @@ const Navbar = ({ user }) => {
 
   return (
     <nav className="navbar">
-      <Link to="/" className="navbar-brand">
-        🎬 Movie Tracker
-      </Link>
+      <Link to="/" className="nav-link-brand">
+    <img src={logo} alt="Movie Tracker Logo" className="navbar-logo" />
+  </Link>
       <div className="navbar-links">
         {user ? (
           // Jika pengguna sudah login
