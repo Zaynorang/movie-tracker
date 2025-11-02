@@ -1,7 +1,15 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { db, auth } from '../firebase';
-import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+// src/pages/AddMovie.js
+import {
+  collection,
+  addDoc,
+  serverTimestamp,
+  query,  // <-- TAMBAHKAN INI
+  where,  // <-- TAMBAHKAN INI
+  getDocs // <-- TAMBAHKAN INI
+} from 'firebase/firestore';
 
 const TMDB_API_KEY = process.env.REACT_APP_TMDB_API_KEY;
 const POSTER_BASE_URL_W185 = 'https://image.tmdb.org/t/p/w185'; // Untuk pratinjau
@@ -72,40 +80,70 @@ const AddMovie = () => {
 
   // Fungsi handleSubmit
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setError('');
+  e.preventDefault();
 
-    try {
-      const userId = auth.currentUser.uid;
-      if (!userId) {
-        throw new Error('No user is logged in.');
-      }
+  const finalTitle = title.trim();
+  const finalYear = Number(year);
 
-      await addDoc(collection(db, 'movies'), {
-        title: title,
-        year: Number(year),
-        genre: genre,
-        rating: Number(rating),
-        overview: overview,
-        review: review,
-        
-        // --- PERUBAHAN DATA SIMPAN: Tambahkan manualPosterUrl ---
-        poster_path: posterPath, // Dari TMDb search
-        manual_poster_url: manualPosterUrl, // Dari input manual
-        // --- AKHIR PERUBAHAN ---
+  // Validasi dasar
+  if (!finalTitle || !finalYear) {
+     setError('Title and Year are required.');
+     return;
+  }
 
-        userId: userId,
-        createdAt: serverTimestamp(),
-      });
+  setLoading(true);
+  setError(''); 
 
-      navigate('/');
-    } catch (err) {
-      setError('Failed to add movie. ' + err.message);
-      console.error(err);
+  try {
+    const userId = auth.currentUser.uid;
+    if (!userId) {
+      throw new Error('No user is logged in.');
     }
-    setLoading(false);
-  };
+
+    // --- PENGECEKAN DUPLIKAT DIMULAI ---
+    const moviesCollectionRef = collection(db, 'movies');
+
+    // 1. Buat kueri untuk mencari film dengan userId, title, DAN year yang sama
+    const q = query(moviesCollectionRef, 
+      where("userId", "==", userId),
+      where("title", "==", finalTitle),
+      where("year", "==", finalYear)
+    );
+
+    // 2. Jalankan kueri
+    const querySnapshot = await getDocs(q);
+
+    // 3. Cek apakah kueri mengembalikan dokumen
+    if (!querySnapshot.empty) {
+      // Jika tidak kosong, berarti duplikat ditemukan!
+      setError(`Error: "${finalTitle} (${finalYear})" is already in your list.`);
+      setLoading(false); // Hentikan loading
+      return; // Hentikan eksekusi fungsi
+    }
+    // --- PENGECEKAN DUPLIKAT SELESAI ---
+
+    // Jika kita sampai di sini, berarti tidak ada duplikat. Lanjutkan menambahkan.
+    await addDoc(moviesCollectionRef, {
+      title: finalTitle,
+      year: finalYear,
+      genre: genre,
+      rating: Number(rating),
+      overview: overview,
+      review: review,
+      poster_path: posterPath,
+      manual_poster_url: manualPosterUrl,
+      userId: userId,
+      createdAt: serverTimestamp(),
+    });
+
+    navigate('/'); // Navigasi ke dashboard setelah berhasil
+
+  } catch (err) {
+    setError('Failed to add movie. ' + err.message);
+    console.error(err);
+    setLoading(false); // Hentikan loading jika terjadi error
+  }
+};
 
   // Fungsi untuk mendapatkan URL poster untuk pratinjau di form
   const getPreviewPosterUrl = () => {

@@ -190,25 +190,92 @@ textarea {
   text-align: center;
 }
 
-/* Dashboard */
+
+
+/* --- Style untuk Fitur Impor/Ekspor --- */
+
+/* Atur ulang header dashboard agar bisa menangani banyak tombol */
 .dashboard-header {
   display: flex;
+  flex-wrap: wrap; /* Biarkan tombol turun ke baris baru di layar kecil */
   justify-content: space-between;
   align-items: center;
   margin-bottom: 2rem;
   border-bottom: 2px solid #333;
   padding-bottom: 1rem;
+  gap: 1rem; /* Jarak antar item (judul dan grup tombol) */
 }
 
-.dashboard-header h2 {
-  font-size: 2.2rem;
+.dashboard-header-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem; /* Jarak antar tombol */
+  justify-content: flex-end;
+}
+
+/* Sembunyikan input file asli */
+.hidden-file-input {
+  display: none;
+}
+
+/* Buat label terlihat seperti tombol dan bisa di-klik */
+.dashboard-header-actions label.btn {
+  cursor: pointer;
+  margin: 0;
+}
+
+/* Efek disabled untuk label */
+.dashboard-header-actions label.btn.disabled {
+  background-color: #555;
+  color: #999;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+
+/* Style untuk pesan feedback impor */
+.import-feedback {
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-weight: 500;
+}
+
+.import-feedback.success {
+  background-color: #0c4d0c; /* Hijau tua */
+  color: #d4edda;
+  border: 1px solid #c3e6cb;
+}
+
+.import-feedback.error {
+  background-color: #b20710; /* Merah (sama seperti error) */
+  color: #f8d7da;
+  border: 1px solid #f5c6cb;
 }
 
 /* Daftar Film & Kartu Film */
-.movie-list {
+/* CSS DIPERBARUI - Sekarang untuk Grid View */
+.movie-list.grid-view {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1.5rem;
+}
+
+/* CSS BARU - Untuk List View */
+.movie-list.list-view {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* (Opsional) 
+   Pastikan movie-card di list view memiliki lebar penuh.
+   Biasanya ini terjadi otomatis dengan flex-direction column.
+*/
+.movie-list.list-view .movie-card {
+  width: 100%;
+  max-width: none; /* Hapus batasan jika ada */
 }
 
 .movie-card {
@@ -432,4 +499,96 @@ textarea {
   color: #888;
   margin-top: 0.5rem;
   display: block; /* Agar menempati baris baru */
+}
+
+/* --- Style untuk Tombol Grid/List View --- */
+.view-toggle-buttons {
+  display: flex;
+  gap: 0.5rem;
+  /* Pindahkan grup tombol ini ke kiri, 
+     dan tombol aksi (Export, dll) ke kanan */
+  margin-right: auto; 
+}
+
+.btn-view {
+  font-size: 1.3rem; /* Perbesar ikon emoji */
+  font-weight: bold;
+  line-height: 1;
+  padding: 0.5rem 0.8rem;
+  background-color: #333; /* Warna tidak aktif */
+  color: #aaa;
+}
+
+.btn-view:hover {
+  background-color: #555;
+  color: #fff;
+}
+
+/* Style untuk tombol yang sedang aktif */
+.btn-view.active {
+  background-color: #e50914; /* Merah (warna primer) */
+  color: #fff;
+}
+
+/* Pastikan header bisa menangani pemisahan tombol */
+.dashboard-header-actions {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  justify-content: flex-end; /* Jaga agar aksi utama tetap di kanan */
+}
+
+/* --- Style untuk Halaman Settings --- */
+.settings-page .form-container {
+  max-width: 700px; /* Buat kontainer sedikit lebih lebar */
+}
+
+.settings-section {
+  background-color: #2a2a2a;
+  padding: 1.5rem;
+  border-radius: 6px;
+  margin-bottom: 2rem;
+  border: 1px solid #333;
+}
+
+.settings-section h3 {
+  color: #fff;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid #555;
+  padding-bottom: 0.5rem;
+}
+
+.settings-section p {
+  color: #ccc;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.danger-zone-text {
+  color: #f8d7da !important; /* Warna teks merah muda */
+}
+
+/* Style untuk pesan feedback di halaman settings */
+.settings-feedback {
+  margin-top: 1rem;
+  font-weight: 500;
+  padding: 0.8rem;
+  border-radius: 4px;
+  background-color: #0c4d0c; /* Latar belakang sukses (hijau) */
+  color: #d4edda;
+}
+
+.settings-feedback.error {
+  background-color: #b20710; /* Latar belakang error (merah) */
+  color: #f8d7da;
+}
+
+.settings-section-warning {
+  font-size: 0.9rem;
+  color: #aaa;
+  background-color: #333;
+  border-left: 4px solid #f5c518; /* Kuning */
+  padding: 1rem;
+  border-radius: 4px;
 }

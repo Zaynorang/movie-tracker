@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { auth } from './firebase'; // Impor instance auth
 import { onAuthStateChanged } from 'firebase/auth';
 
+
 // Impor komponen dan halaman
 import Navbar from './components/Navbar';
 import Login from './pages/Login';
@@ -10,6 +11,7 @@ import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
 import AddMovie from './pages/AddMovie';
 import EditMovie from './pages/EditMovie';
+import Settings from './pages/Settings';
 
 function App() {
   // State untuk menyimpan data pengguna yang sedang login
@@ -78,6 +80,10 @@ function App() {
             path="/edit/:id"
             element={currentUser ? <EditMovie /> : <Navigate to="/login" />}
           />
+          <Route
+        path="/settings"
+        element={currentUser ? <Settings /> : <Navigate to="/login" />}
+      />
 
           {/* Fallback route jika URL tidak ditemukan */}
           <Route path="*" element={<Navigate to={currentUser ? '/' : '/login'} />} />
