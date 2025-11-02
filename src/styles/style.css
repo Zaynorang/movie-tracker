@@ -1,300 +1,45 @@
-/* Reset & Global Styles */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+/* --- Style untuk Fitur Pencarian --- */
+.search-container {
+  margin-bottom: 2rem;
+  background-color: #2a2a2a; /* Sedikit beda warna */
 }
 
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
-    Arial, sans-serif;
-  background-color: #141414; /* Latar belakang gelap utama */
-  color: #e5e5e5; /* Warna teks utama (putih pudar) */
-  line-height: 1.6;
+.search-results {
+  margin-top: 1.5rem;
+  border-top: 1px solid #444;
+  padding-top: 1.5rem;
 }
 
-a {
-  color: #e50914; /* Merah Netflix */
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-/* Container utama untuk padding */
-.container {
-  max-width: 1100px;
-  margin: 2rem auto;
-  padding: 0 2rem;
-}
-
-/* Styling Tombol (Button) */
-.btn {
-  display: inline-block;
-  padding: 0.7rem 1.5rem;
-  border: none;
+.search-result-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 0.8rem;
+  background-color: #333;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 1rem;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  text-align: center;
+  transition: background-color 0.2s ease;
 }
 
-.btn-primary {
-  background-color: #e50914; /* Merah */
-  color: #fff;
+.search-result-item:hover {
+  background-color: #454545;
 }
 
-.btn-primary:hover {
-  background-color: #f40612;
-}
-
-.btn-secondary {
-  background-color: #565656; /* Abu-abu */
-  color: #fff;
-}
-
-.btn-secondary:hover {
-  background-color: #6d6d6d;
-}
-
-.btn-danger {
-  background-color: #b20710; /* Merah lebih gelap untuk 'delete' */
-  color: #fff;
-}
-
-.btn-danger:hover {
-  background-color: #d90813;
-}
-
-.btn:disabled {
-  background-color: #555;
-  cursor: not-allowed;
-}
-
-/* Navbar */
-.navbar {
-  background: #111;
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 2px solid #e50914;
-}
-
-.navbar-brand {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: #e50914;
-  text-decoration: none;
-}
-
-.navbar-links {
-  display: flex;
-  align-items: center;
-}
-
-.nav-link {
-  color: #e5e5e5;
-  margin: 0 0.7rem;
-  font-weight: 500;
-  font-size: 1.1rem;
-}
-
-.navbar-user {
-  color: #aaa;
+.search-result-item img {
+  width: 50px; /* Ukuran poster kecil */
+  height: auto;
+  border-radius: 3px;
   margin-right: 1rem;
-  font-size: 0.9rem;
-}
-
-.btn-logout {
-  background: none;
-  border: 1px solid #e50914;
-  color: #e50914;
-  padding: 0.4rem 0.8rem;
-  font-size: 0.9rem;
-}
-
-.btn-logout:hover {
-  background: #e50914;
-  color: #fff;
-}
-
-/* Formulir (Login, Signup, Add, Edit) */
-.form-container {
-  max-width: 500px;
-  margin: 3rem auto;
-  padding: 2.5rem;
-  background-color: #1f1f1f; /* Latar form sedikit lebih terang */
-  border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-}
-
-.form-container h2 {
-  text-align: center;
-  margin-bottom: 1.5rem;
-  color: #fff;
-}
-
-.form-group {
-  margin-bottom: 1.2rem;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 0.5rem;
-  color: #aaa;
-}
-
-input[type='text'],
-input[type='email'],
-input[type='password'],
-input[type='number'],
-textarea,
-select {
-  width: 100%;
-  padding: 0.8rem;
-  font-size: 1rem;
-  background-color: #333;
   border: 1px solid #555;
-  border-radius: 4px;
-  color: #fff;
 }
 
-textarea {
-  min-height: 100px;
-  resize: vertical;
-}
-
-.form-container button[type='submit'] {
-  width: 100%;
-  margin-top: 1rem;
-  padding: 0.8rem;
-  font-size: 1.1rem;
-}
-
-.form-switch {
-  text-align: center;
-  margin-top: 1.5rem;
-  color: #aaa;
-}
-
-.error-message {
-  background-color: #b20710;
-  color: #fff;
-  padding: 0.8rem;
-  border-radius: 4px;
-  margin-bottom: 1rem;
-  text-align: center;
-}
-
-/* Dashboard */
-.dashboard-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
-  border-bottom: 2px solid #333;
-  padding-bottom: 1rem;
-}
-
-.dashboard-header h2 {
-  font-size: 2.2rem;
-}
-
-/* Daftar Film & Kartu Film */
-.movie-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.5rem;
-}
-
-.movie-card {
-  background-color: #1f1f1f;
-  border-radius: 8px;
-  padding: 1.5rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+.search-result-item .result-info {
   display: flex;
   flex-direction: column;
-}
-
-.movie-card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 0.5rem;
-}
-
-.movie-card-header h3 {
-  font-size: 1.4rem;
   color: #fff;
-  flex: 1;
-  margin-right: 1rem;
 }
 
-.movie-card-rating {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #f5c518; /* Warna kuning IMDB */
-}
-
-.movie-card-genre {
+.search-result-item .result-info span {
+  font-size: 0.9rem;
   color: #aaa;
-  font-style: italic;
-  margin-bottom: 1rem;
-}
-
-.movie-card-notes {
-  color: #ccc;
-  flex-grow: 1; /* Membuat notes mengisi ruang */
-  margin-bottom: 1.5rem;
-  border-left: 3px solid #e50914;
-  padding-left: 0.8rem;
-  white-space: pre-wrap; /* Menghormati baris baru di notes */
-}
-
-.movie-card-actions {
-  display: flex;
-  gap: 0.5rem;
-  margin-top: auto; /* Mendorong tombol ke bawah */
-}
-
-.movie-card-actions .btn {
-  flex: 1;
-}
-
-/* Indikator Loading (Spinner) */
-.loading-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-.spinner-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 3rem;
-}
-
-.spinner {
-  border: 5px solid #333; /* Lingkaran abu-abu */
-  border-top: 5px solid #e50914; /* Merah */
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
 }
